@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="2" style="background: url('background1.jpg')">
+    <center>
+        <button onclick="replaceSpinner('spinner1.png')" style="margin: 10px"><img src="spinner1.png" width="70" height="70"></button>
+        <button onclick="replaceSpinner('spinner2.png')" style="margin: 10px"><img src="spinner2.png" width="70" height="70"></button>
+        <button onclick="replaceSpinner('spinner3.png')" style="margin: 10px"><img src="spinner3.png" width="70" height="70"></button>
+        <br>
+        <button onclick="replaceBackground('background1.jpg')" style="margin: 10px"><img src="background1.jpg" width="70" height="70"></button>
+        <button onclick="replaceBackground('background2.jpg')" style="margin: 10px"><img src="background2.jpg" width="70" height="70"></button>
+        <button onclick="replaceBackground('background3.jpg')" style="margin: 10px"><img src="background3.jpg" width="70" height="70"></button>
+        <br>
+        <img onmousedown="setRotate(true)" onmouseup="setRotate(false)" onmouseout="setRotate(false)" id="1" src="spinner1.png" width="400" height="400">
+        <audio src="spinnersound.wav" id="3"></audio>
+    </center>
+</body>
+<script>
+    let replaceSpinner = (img)=> {
+        document.getElementById('1').src = img
+    }
+    let replaceBackground = (img)=> {
+        document.getElementById('2').style = "background: url('"+img+"')"
+    }
+    let rotate = false
+    let setRotate = (rotate1)=> {
+        rotate = rotate1
+        document.getElementById('3').play()
+    }
+    setInterval(()=>{
+        if(rotate) deg += 10
+        document.getElementById('1').style = 'transform: rotate('+deg+'deg)'
+    },10)
+    let deg = 0
+</script>
+</html>
